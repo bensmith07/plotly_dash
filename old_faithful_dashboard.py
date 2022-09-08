@@ -24,30 +24,6 @@ plot_1 = dcc.Graph(id='old_faithful_scatter',
                    figure={'data': [data_1],
                            'layout': layout_1})
 
-# plot_1 = dcc.Graph(
-#                    id='scatterplot', 
-#                    figure = {
-#                             'data':[
-#                                     go.Scatter(
-#                                                x=df.duration,
-#                                                y=df.interval,
-#                                                mode='markers',
-#                                                marker={
-#                                                        'size':12,
-#                                                        'color':'rgb(51,204,153)',
-#                                                        'symbol':'pentagon',
-#                                                        'line':{'width':2}
-#                                                       }
-#                                               )
-#                                     ],
-#                             'layout': go.Layout(
-#                                                 title='Example Scatterplot',
-#                                                 xaxis={'title':'The X-Axis'},
-#                                                 yaxis={'title':'The Y-Axis'}
-#                                                )
-#                             }
-#                   )
-
 # create the app and define the layout
 app = dash.Dash()
 app.layout = html.Div([plot_1])
