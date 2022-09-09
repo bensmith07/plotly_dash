@@ -44,14 +44,15 @@ app.layout = html.Div(
 @app.callback(Output(component_id='hover_image',
                      component_property='src'),
               [Input(component_id='wheels_plot',
-                     component_property='hoverData')])
-def callback_image(hoverData):
-    color = hoverData['points'][0]['x']
-    wheels = hoverData['points'][0]['y']
+                     component_property='clickData')])
+def callback_image(clickData):
+    color = clickData['points'][0]['x']
+    wheels = clickData['points'][0]['y']
     image_file = (df[(df.color == color) & (df.wheels == wheels)]
                     .image.values[0])
     path = 'course_resources/data/images/'
     return encode_image(path + image_file)
+
 
 if __name__ == '__main__':
     app.run_server()
