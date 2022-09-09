@@ -6,26 +6,23 @@ import plotly.graph_objects as go
 import pandas as pd
 
 df = pd.read_csv('course_resources/data/mpg.csv')
-features = df.columns
+
+dropdown_options = [{'label':col, 'value':col} for col in df.columns]
 
 app = dash.Dash()
 
 app.layout = html.Div(
-    children=[html.Div(children=[dcc.Dropdown(id='x_axis_dropdown',
-                                              options=[{'label':feat, 'value':feat} 
-                                                            for feat in features
-                                                      ],
-                                              value='displacement')],
-                       style={'width':'48%', 'display':'inline-block'}),
-              html.Div(children=[dcc.Dropdown(id='y_axis_dropdown',
-                                              options=[{'label':feat, 'value':feat} 
-                                                            for feat in features
-                                                      ],
-                                              value='mpg')],
-                       style={'width':'48%', 'display':'inline-block'}),
-              dcc.Graph(id='feature_graphic',
-                        figure=None)],
-    style={'padding':10}
+   children=[html.Div(children=[dcc.Dropdown(id='x_axis_dropdown',
+                                             options=dropdown_options,
+                                             value='displacement')],
+                      style={'width':'48%', 'display':'inline-block'}),
+             html.Div(children=[dcc.Dropdown(id='y_axis_dropdown',
+                                             options=dropdown_options,
+                                             value='mpg')],
+                      style={'width':'48%', 'display':'inline-block'}),
+             dcc.Graph(id='feature_graphic',
+                       figure=None)],
+   style={'padding':10}
 )
 
 @app.callback(Output(component_id='feature_graphic',
