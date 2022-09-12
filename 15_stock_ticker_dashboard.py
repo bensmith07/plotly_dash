@@ -27,7 +27,6 @@ app.layout = html.Div([
     html.Div(children=['Select stock symbols:',
                       dcc.Dropdown(id='ticker_dropdown',
                                    options=dropdown_options,
-                                   value='TSLA',
                                    multi=True)],
              style={'width': '40%',
                     'display': 'inline-block',
@@ -36,8 +35,9 @@ app.layout = html.Div([
     # date picker
     html.Div(children=['Select start and end dates:',
                        dcc.DatePickerRange(id='date_picker',
-                                           start_date='2017-01-01',
-                                           end_date='2017-12-31')],
+                                        #    start_date='2017-01-01',
+                                        #    end_date='2017-12-31'
+                                        )],
             style={'width': '25%',
                     'display': 'inline-block'}),
 
